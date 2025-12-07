@@ -1,1 +1,78 @@
-<!-- placeholder for tracker template -->
+<!-- templates/midnight-corruption-tracker.html -->
+
+<div class="mc-tracker">
+  {{#if hasActors}}
+  <table class="mc-table">
+    <thead>
+      <tr>
+        <th>Actor</th>
+        <th>Lvl</th>
+        <th>Die</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each actors}}
+      <tr>
+        <td>
+          <div class="mc-actor-cell">
+            <img src="{{img}}" width="24" height="24"/>
+            <span>{{name}}</span>
+          </div>
+        </td>
+        <td class="mc-center">
+          {{level}}
+        </td>
+        <td class="mc-center">
+          {{die}}
+        </td>
+        <td class="mc-actions">
+          <button type="button" class="mc-roll" data-actor-id="{{id}}">Roll</button>
+          <button type="button" class="mc-level-dec" data-actor-id="{{id}}">-</button>
+          <button type="button" class="mc-level-inc" data-actor-id="{{id}}">+</button>
+          <button type="button" class="mc-add-minor" data-actor-id="{{id}}" title="Add minor mutation">m</button>
+          <button type="button" class="mc-add-major" data-actor-id="{{id}}" title="Roll major mutation">M</button>
+          <button type="button" class="mc-remove" data-actor-id="{{id}}" title="Stop tracking">✕</button>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  {{else}}
+    <p>No actors are currently being tracked.</p>
+  {{/if}}
+
+  <hr/>
+
+  <div class="mc-footer">
+    <button type="button" id="mc-add-actor">+ Add Actor</button>
+  </div>
+</div>
+
+<style>
+  .mc-tracker .mc-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .mc-tracker th, .mc-tracker td {
+    padding: 2px 4px;
+  }
+  .mc-tracker thead th {
+    border-bottom: 1px solid #666;
+  }
+  .mc-actor-cell {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .mc-center {
+    text-align: center;
+  }
+  .mc-actions button {
+    margin-right: 2px;
+  }
+  .mc-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+</style>
