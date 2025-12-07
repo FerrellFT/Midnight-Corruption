@@ -1,0 +1,13 @@
+{
+  "id": "midnight-corruption",
+  "title": "Midnight Corruption (Namtara)",
+  "description": "Implements the Midnight Corruption & Corruption Die system for Namtara campaigns.",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11"
+  },
+  "scripts": [
+    "scripts/midnight-corruption.js"
+  ]
+}
