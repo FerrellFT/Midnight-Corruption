@@ -462,6 +462,23 @@ Hooks.once("ready", () => {
   console.log("Midnight Corruption | Ready");
 });
 
+Hooks.on("getSceneControlButtons", controls => {
+  if (!game.user.isGM) return;
+
+  const tokenControls = controls.find(c => c.name === "token");
+  if (!tokenControls) return;
+
+  tokenControls.tools.push({
+    name: "midnight-corruption-tracker",
+    title: "Midnight Corruption Tracker",
+    icon: "fas fa-moon",
+    button: true,
+    onClick: () => {
+      game.midnightCorruption?.openTracker();
+    }
+  });
+});
+
 Hooks.on("chatMessage", (chatLog, messageText, chatData) => {
   const msg = messageText.trim();
   if (msg === "/mctracker") {
