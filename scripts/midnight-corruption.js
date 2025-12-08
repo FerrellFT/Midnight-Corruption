@@ -461,3 +461,16 @@ Hooks.once("ready", () => {
 
   console.log("Midnight Corruption | Ready");
 });
+
+Hooks.on("chatMessage", (chatLog, messageText, chatData) => {
+  const msg = messageText.trim();
+  if (msg === "/mctracker") {
+    if (!game.user.isGM) {
+      ui.notifications.warn("Only GMs can open the Midnight Corruption tracker.");
+    } else {
+      game.midnightCorruption?.openTracker();
+    }
+    // Prevent this from creating an actual chat message
+    return false;
+  }
+});
